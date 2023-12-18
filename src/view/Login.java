@@ -1,10 +1,9 @@
-package main;
+package view;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -62,7 +61,7 @@ public class Login {
 				loginField.setText("");
 			}
 		});
-		botaoLogin.setBounds(179, 110, 89, 23);
+		botaoLogin.setBounds(166, 101, 89, 23);
 		frame.getContentPane().add(botaoLogin);
 	}
 

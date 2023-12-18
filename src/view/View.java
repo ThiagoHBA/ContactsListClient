@@ -1,4 +1,4 @@
-package main;
+package view;
 
 import java.awt.EventQueue;
 import java.util.List;
@@ -7,14 +7,17 @@ import java.util.function.Consumer;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
+
+import core.Controller;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import java.awt.Color;
 
-//view do cliente
 public class View {
 	Controller controller = new Controller();
 
@@ -35,9 +38,7 @@ public class View {
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
 
-	/**
-	 * Create the application.
-	 */
+	
 	public View(String userName) {
 		controller.userName = userName;
 		controller.changeStatusUser();
@@ -71,9 +72,6 @@ public class View {
 		});
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 840, 587);
@@ -89,6 +87,8 @@ public class View {
 		frame.getContentPane().add(scrollPane_1);
 
 		contatosPane = new JTextPane();
+		contatosPane.setBackground(new Color(192, 192, 192));
+		contatosPane.setEditable(false);
 		scrollPane_1.setViewportView(contatosPane);
 
 		JLabel lblNewLabel = new JLabel("CONTATOS");
@@ -128,6 +128,8 @@ public class View {
 		frame.getContentPane().add(scrollPane);
 
 		mensagensPane = new JTextPane();
+		mensagensPane.setBackground(new Color(192, 192, 192));
+		mensagensPane.setEditable(false);
 		scrollPane.setViewportView(mensagensPane);
 
 		JLabel lblNewLabel_1 = new JLabel("MENSAGENS");
@@ -225,18 +227,7 @@ public class View {
 
 	}
 
-	Consumer<String> messageConsumer = (message) -> {
-		String previusText = mensagensPane.getText();
-		if (previusText == null) {
-			previusText = "";
-		}
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(previusText);
-		stringBuilder.append(message);
-		String newText = stringBuilder.toString();
-		mensagensPane.setText(newText);
-
-	};
+	Consumer<String> messageConsumer = (message) -> { updateChat(message); };
 	
 
 }

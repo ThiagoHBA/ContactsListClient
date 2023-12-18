@@ -1,4 +1,4 @@
-package main;
+package core;
 
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
@@ -9,6 +9,9 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+
+import interfaces.Server;
+import interfaces.User;
 
 public class Controller implements User {
 	public List<String> contactsList = new ArrayList<>();
